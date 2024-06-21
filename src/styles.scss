@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+
+.container {
+  margin: 0 10px;
+
+  @media (min-width: 640px) {
+    width: 600px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    width: 700px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 980px;
+  }
+}
+
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
