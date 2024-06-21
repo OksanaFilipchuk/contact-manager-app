@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ContactsManagerModule } from './contacts-manager/contacts-manager.module';
 import { CoreModule } from './core/core.module';
 
 @NgModule({
@@ -12,6 +13,7 @@ import { CoreModule } from './core/core.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ContactsManagerModule,
     CoreModule,
   ],
   providers: [],

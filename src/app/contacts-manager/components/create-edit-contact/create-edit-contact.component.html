@@ -1,0 +1,65 @@
+<div class="create-edit-wrapper container">
+  <form [formGroup]="contactForm">
+    <mat-form-field>
+      <mat-label>First name</mat-label>
+      <input matInput formControlName="firstName" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Last name</mat-label>
+      <input matInput formControlName="lastName" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Primary phone</mat-label>
+      <input
+        matInput
+        placeholder="+38 067 000 00 00"
+        type="text"
+        formControlName="phone"
+      />
+      <mat-error>error-message</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Secondary phone</mat-label>
+      <input
+        matInput
+        placeholder="+38 067 000 00 00"
+        type="text"
+        formControlName="secondaryPhone"
+      />
+      <mat-error>error-message</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="mail@domain.com" formControlName="email" />
+      <mat-error> error-message </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="address" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Birthday date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="birthday" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Additional information</mat-label>
+      <textarea matInput formControlName="additionalInfo"></textarea>
+    </mat-form-field>
+  </form>
+  <button mat-flat-button color="primary" [disabled]="contactForm.invalid">
+    {{ submitButtonName }}
+  </button>
+</div>

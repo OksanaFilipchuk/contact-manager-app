@@ -1,0 +1,23 @@
+.create-edit-wrapper {
+  text-align: right;
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    @media (min-width: 640px) {
+      flex-direction: row;
+    }
+  }
+
+  mat-form-field {
+    width: 100%;
+
+    @media (min-width: 640px) {
+      width: 49%;
+    }
+  }
+}
