@@ -1,0 +1,46 @@
+<div class="contact-list container">
+  <div class="interact-wrapper">
+    <mat-form-field>
+      <mat-label>Search</mat-label>
+      <input matInput type="text" [formControl]="value" />
+
+      <button
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="value.setValue('')"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <a
+      routerLink="create-contact"
+      routerLinkActive="router-link-active"
+      mat-fab
+      extended
+      color="primary"
+    >
+      <mat-icon>add</mat-icon>
+      Add contact
+    </a>
+  </div>
+
+  <div *ngFor="let contact of contacts" class="card-wrapper">
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-card-title
+          >{{ contact.data.firstName }}
+          {{ contact.data.lastName }}</mat-card-title
+        >
+        <mat-card-subtitle>{{ contact.data.phone }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions align="end">
+        <button mat-button [routerLink]="contact.id.toString()">More</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="no-contacts" *ngIf="!contacts.length">
+    There are no contacts matching the search request
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.contact-list {
+  min-height: calc(100vh - 80px);
+
+  .interact-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  mat-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+
+  .no-contacts {
+    font-size: 28px;
+    text-align: center;
+    margin-top: 100px;
+  }
+}
