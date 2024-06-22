@@ -1,0 +1,9 @@
+.data-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  div {
+    padding: 15px;
+    border: 1px solid #b7b6b7;
+  }
+}

@@ -1,1 +1,36 @@
-<p>contact-view works!</p>
+<div class="contact-view container">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <div mat-card-avatar>
+        <mat-icon>person</mat-icon>
+      </div>
+      <mat-card-title
+        >{{ contact?.firstName }} {{ contact?.lastName }}</mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <div class="data-table">
+        <div>First name</div>
+        <div>{{ contact?.firstName }}</div>
+        <div>Last Name</div>
+        <div>{{ contact?.lastName }}</div>
+        <div>Phone</div>
+        <div>{{ contact?.phone }}</div>
+        <div>Secondary phone</div>
+        <div>{{ contact?.secondaryPhone }}</div>
+        <div>Email address</div>
+        <div>{{ contact?.email }}</div>
+        <div>Address</div>
+        <div>{{ contact?.address }}</div>
+        <div>Birthday</div>
+        <div>{{ contact?.birthday | date }}</div>
+        <div>Additional info</div>
+        <div>{{ contact?.additionalInfo }}</div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button routerLink="edit-contact">Edit</button>
+      <button mat-button (click)="openDialog()">Delete</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
