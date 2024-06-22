@@ -1,5 +1,15 @@
 .create-edit-wrapper {
   text-align: right;
+  min-height: calc(100vh - 80px);
+
+  .back-button {
+    display: flex;
+    align-items: center;
+  }
+
+  h4 {
+    text-align: center;
+  }
 
   form {
     display: flex;
@@ -11,6 +21,11 @@
     @media (min-width: 640px) {
       flex-direction: row;
     }
+  }
+
+  button {
+    width: 85px;
+    margin-left: 10px;
   }
 
   mat-form-field {

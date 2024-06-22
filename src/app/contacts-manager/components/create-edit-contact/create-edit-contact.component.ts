@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
-import { Router } from '@angular/router';
+import { DateAdapter } from '@angular/material/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-create-edit-contact',
@@ -9,20 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-edit-contact.component.scss'],
 })
 export class CreateEditContactComponent implements OnInit {
+  isCreate: boolean;
   submitButtonName = '';
-
-  constructor(
-    private readonly adapter: DateAdapter<Date>,
-    private router: Router
-  ) {
-    this.adapter.setLocale('UA');
-  }
-
-  ngOnInit(): void {
-    this.submitButtonName = this.router.url.includes('create-contact')
-      ? 'Create'
-      : 'Save';
-  }
+  contactIdToUpdate: string | null;
   contactForm = new FormGroup({
     firstName: new FormControl('', [
       Validators.required,
@@ -44,4 +34,53 @@ export class CreateEditContactComponent implements OnInit {
     birthday: new FormControl(''),
     additionalInfo: new FormControl('', [Validators.maxLength(100)]),
   });
+
+  constructor(
+    private readonly adapter: DateAdapter<Date>,
+    private router: Router,
+    private route: ActivatedRoute,
+    private localStorageService: LocalStorageService
+  ) {
+    this.adapter.setLocale('UA');
+  }
+
+  ngOnInit(): void {
+    this.isCreate = this.router.url.includes('create-contact');
+    this.submitButtonName = this.isCreate ? 'Create' : 'Save';
+    this.contactIdToUpdate = this.route.snapshot.paramMap.get('id');
+    if (this.contactIdToUpdate) {
+      this.setFormValues(this.contactIdToUpdate);
+    }
+  }
+
+  setFormValues(id: string): void {
+    const contact = JSON.parse(this.localStorageService.getItem(id) || '');
+    if (contact) {
+      Object.keys(contact).forEach((key) => {
+        this.contactForm.patchValue({ [key]: contact[key] });
+      });
+    }
+  }
+
+  onFormSubmit(): void {
+    this.isCreate ? this.createContact() : this.updateContact();
+  }
+
+  private createContact(idToUpdate?: string): void {
+    const keys = Object.keys(localStorage).map((el) => +el);
+    const id = idToUpdate || Math.max(...keys) + 1;
+    this.localStorageService.setItem(
+      id.toString(),
+      JSON.stringify(this.contactForm.value)
+    );
+  }
+
+  private updateContact(): void {
+    if (this.contactIdToUpdate) {
+      this.localStorageService.removeItem(this.contactIdToUpdate);
+      this.createContact(this.contactIdToUpdate);
+    }
+  }
+
+  cancel() {}
 }

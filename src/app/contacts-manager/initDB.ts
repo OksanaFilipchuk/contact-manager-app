@@ -8,7 +8,7 @@ export const initData: ContactData[] = [
     phone: '+38067-123-45-67',
     secondaryPhone: null,
     address: 'Shevshenka str, Lviv',
-    birthday: '17.01.1978',
+    birthday: '1992-06-15T21:00:00.000Z',
     additionalInfo: 'Manager at trade company',
   },
   {
@@ -18,7 +18,7 @@ export const initData: ContactData[] = [
     phone: '+38050-123-45-67',
     secondaryPhone: '+38050-123-45-68',
     address: 'Kopernika st,1 Ternopil',
-    birthday: '27.07.1999',
+    birthday: '1985-12-15T21:00:00.000Z',
     additionalInfo: 'Loyer',
   },
   {
@@ -28,7 +28,7 @@ export const initData: ContactData[] = [
     phone: '+38066-888-45-67',
     secondaryPhone: '+38050-888-45-68',
     address: 'Franka st,1 Kyiv',
-    birthday: '02.03.2001',
+    birthday: '1999-03-15T21:00:00.000Z',
     additionalInfo: 'Doctor at privat clinic',
   },
 ];

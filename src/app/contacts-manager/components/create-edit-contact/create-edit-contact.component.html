@@ -1,4 +1,12 @@
 <div class="create-edit-wrapper container">
+  <a
+    [routerLink]="['/contacts']"
+    routerLinkActive="active-link"
+    class="back-button"
+    ><mat-icon color="primary">keyboard_arrow_left</mat-icon
+    ><span>Back to Contacts</span></a
+  >
+  <h4>Contact information</h4>
   <form [formGroup]="contactForm">
     <mat-form-field>
       <mat-label>First name</mat-label>
@@ -59,7 +67,22 @@
       <textarea matInput formControlName="additionalInfo"></textarea>
     </mat-form-field>
   </form>
-  <button mat-flat-button color="primary" [disabled]="contactForm.invalid">
-    {{ submitButtonName }}
-  </button>
+  <div class="buttons">
+    <button
+      *ngIf="!isCreate"
+      mat-flat-button
+      color="primary"
+      (click)="cancel()"
+    >
+      Cancel
+    </button>
+    <button
+      mat-flat-button
+      color="primary"
+      [disabled]="contactForm.invalid"
+      (click)="onFormSubmit()"
+    >
+      {{ submitButtonName }}
+    </button>
+  </div>
 </div>

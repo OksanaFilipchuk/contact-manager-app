@@ -37,6 +37,15 @@
       </mat-card-header>
       <mat-card-actions align="end">
         <button mat-button [routerLink]="contact.id.toString()">More</button>
+        <button
+          mat-button
+          [routerLink]="[contact.id.toString(), 'edit-contact']"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-button (click)="deleteContact(contact.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
       </mat-card-actions>
     </mat-card>
   </div>

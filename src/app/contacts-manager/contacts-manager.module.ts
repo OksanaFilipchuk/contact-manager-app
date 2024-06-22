@@ -12,12 +12,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ContactViewComponent } from './components/contact-view/contact-view.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
     ContactsListComponent,
     CreateEditContactComponent,
     ContactViewComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -30,6 +33,7 @@ import { ContactViewComponent } from './components/contact-view/contact-view.com
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatDialogModule,
   ],
 })
 export class ContactsManagerModule {}

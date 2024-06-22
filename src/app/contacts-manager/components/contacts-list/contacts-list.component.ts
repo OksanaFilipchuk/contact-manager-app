@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { FormControl } from '@angular/forms';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, take, takeUntil } from 'rxjs';
 import { ContactDataToSave } from '../../models/contact.model';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-contacts-list',
@@ -14,11 +16,12 @@ export class ContactsListComponent implements OnInit, OnDestroy {
   contacts: ContactDataToSave[];
   value = new FormControl('');
 
-  constructor(private localStorageService: LocalStorageService) {}
+  constructor(
+    private localStorageService: LocalStorageService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
-    // this.localStorageService.clear();
-    this.localStorageService.initiateData();
     this.contacts = this.localStorageService.getAllItems();
     this.value.valueChanges
       .pipe(takeUntil(this.destroy$))
@@ -37,6 +40,24 @@ export class ContactsListComponent implements OnInit, OnDestroy {
             );
         } else {
           this.contacts = this.localStorageService.getAllItems();
+        }
+      });
+  }
+
+  deleteContact(id: number) {
+    this.dialog
+      .open(ConfirmDialogComponent, {
+        data: {
+          question: 'Are you sure you want to delete this contact?',
+          title: 'Delete contact',
+        },
+      })
+      .afterClosed()
+      .pipe(take(1))
+      .subscribe((res) => {
+        if (res) {
+          this.localStorageService.removeItem(id.toString());
+          this.contacts = this.contacts.filter((el) => el.id !== id);
         }
       });
   }
