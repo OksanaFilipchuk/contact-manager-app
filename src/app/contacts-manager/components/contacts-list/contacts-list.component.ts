@@ -17,7 +17,7 @@ export class ContactsListComponent implements OnInit, OnDestroy {
   constructor(private localStorageService: LocalStorageService) {}
 
   ngOnInit(): void {
-    this.localStorageService.clear();
+    // this.localStorageService.clear();
     this.localStorageService.initiateData();
     this.contacts = this.localStorageService.getAllItems();
     this.value.valueChanges
