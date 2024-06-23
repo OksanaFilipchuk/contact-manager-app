@@ -15,6 +15,7 @@ import { ContactViewComponent } from './components/contact-view/contact-view.com
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { IMaskModule } from 'angular-imask';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatNativeDateModule,
     MatDialogModule,
     MatSnackBarModule,
+    IMaskModule,
   ],
 })
 export class ContactsManagerModule {}

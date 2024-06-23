@@ -30,8 +30,9 @@
       <mat-label>Primary phone</mat-label>
       <input
         matInput
-        placeholder="+38 067 000 00 00"
-        type="text"
+        [imask]="{ mask: '+{38} (000) 000-00-00' }"
+        [unmask]="true"
+        placeholder="+38 (067) 000-00-00"
         formControlName="phone"
       />
       <mat-error>Please provide valid data.</mat-error>
@@ -41,8 +42,9 @@
       <mat-label>Secondary phone</mat-label>
       <input
         matInput
-        placeholder="+38 067 000 00 00"
-        type="text"
+        [imask]="{ mask: '+{38} (000) 000-00-00' }"
+        [unmask]="true"
+        placeholder="+38 (067) 000-00-00"
         formControlName="secondaryPhone"
       />
       <mat-error>Please provide valid data.</mat-error>
