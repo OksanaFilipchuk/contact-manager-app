@@ -1,5 +1,7 @@
 # ContactsManagerApp
 
+[Contacts-manager-deploy](https://euphonious-boba-6fd37f.netlify.app/contacts)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.10.
 
 ## Development server
