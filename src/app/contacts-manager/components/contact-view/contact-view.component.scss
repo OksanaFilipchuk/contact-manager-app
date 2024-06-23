@@ -1,9 +1,19 @@
-.data-table {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.contact-view {
+  .back-button {
+    display: flex;
+    align-items: center;
+  }
 
-  div {
-    padding: 15px;
-    border: 1px solid #b7b6b7;
+  .data-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    div {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 15px;
+      border: 1px solid #b7b6b7;
+    }
   }
 }

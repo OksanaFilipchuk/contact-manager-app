@@ -1,4 +1,11 @@
 <div class="contact-view container">
+  <a
+    [routerLink]="['/contacts']"
+    routerLinkActive="active-link"
+    class="back-button"
+    ><mat-icon color="primary">keyboard_arrow_left</mat-icon
+    ><span>Back to Contacts</span></a
+  >
   <mat-card appearance="outlined">
     <mat-card-header>
       <div mat-card-avatar>
@@ -10,21 +17,21 @@
     </mat-card-header>
     <mat-card-content>
       <div class="data-table">
-        <div>First name</div>
+        <div><mat-icon>perm_identity</mat-icon>First name</div>
         <div>{{ contact?.firstName }}</div>
-        <div>Last Name</div>
+        <div><mat-icon>perm_identity</mat-icon>Last Name</div>
         <div>{{ contact?.lastName }}</div>
-        <div>Phone</div>
+        <div><mat-icon>phone </mat-icon>Phone</div>
         <div>{{ contact?.phone }}</div>
-        <div>Secondary phone</div>
+        <div><mat-icon>phone </mat-icon>Secondary phone</div>
         <div>{{ contact?.secondaryPhone }}</div>
-        <div>Email address</div>
+        <div><mat-icon>mail </mat-icon>Email address</div>
         <div>{{ contact?.email }}</div>
-        <div>Address</div>
+        <div><mat-icon>location_city </mat-icon>Address</div>
         <div>{{ contact?.address }}</div>
-        <div>Birthday</div>
+        <div><mat-icon>date_range </mat-icon>Birthday</div>
         <div>{{ contact?.birthday | date }}</div>
-        <div>Additional info</div>
+        <div><mat-icon>check</mat-icon>Additional info</div>
         <div>{{ contact?.additionalInfo }}</div>
       </div>
     </mat-card-content>
