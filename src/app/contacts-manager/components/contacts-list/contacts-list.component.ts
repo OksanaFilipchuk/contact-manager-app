@@ -31,10 +31,10 @@ export class ContactsListComponent implements OnInit, OnDestroy {
             .getAllItems()
             .filter(
               (el) =>
-                el.data.firstName
+                `${el.data.firstName} ${el.data.lastName}`
                   .toLocaleLowerCase()
                   .includes(value.toLowerCase()) ||
-                el.data.lastName
+                `${el.data.lastName} ${el.data.firstName}`
                   ?.toLocaleLowerCase()
                   .includes(value.toLowerCase())
             );
