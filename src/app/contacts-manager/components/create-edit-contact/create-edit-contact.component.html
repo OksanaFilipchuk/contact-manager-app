@@ -11,11 +11,19 @@
     <mat-form-field>
       <mat-label>First name</mat-label>
       <input matInput formControlName="firstName" />
+      <mat-error>
+        The field is required and must contain between 3 and 20
+        characters.</mat-error
+      >
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Last name</mat-label>
       <input matInput formControlName="lastName" />
+      <mat-error>
+        The field is required and must contain between 3 and 20
+        characters.</mat-error
+      >
     </mat-form-field>
 
     <mat-form-field>
@@ -26,7 +34,7 @@
         type="text"
         formControlName="phone"
       />
-      <mat-error>error-message</mat-error>
+      <mat-error>Please provide valid data.</mat-error>
     </mat-form-field>
 
     <mat-form-field>
@@ -37,18 +45,21 @@
         type="text"
         formControlName="secondaryPhone"
       />
-      <mat-error>error-message</mat-error>
+      <mat-error>Please provide valid data.</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Email</mat-label>
       <input matInput placeholder="mail@domain.com" formControlName="email" />
-      <mat-error> error-message </mat-error>
+      <mat-error> Please provide valid data. </mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Address</mat-label>
       <input matInput formControlName="address" />
+      <mat-error>
+        The field must contain between 3 and 20 characters.
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
@@ -65,24 +76,15 @@
     <mat-form-field>
       <mat-label>Additional information</mat-label>
       <textarea matInput formControlName="additionalInfo"></textarea>
+      <mat-error> The field must contain less than 100 characters. </mat-error>
     </mat-form-field>
   </form>
-  <div class="buttons">
-    <button
-      *ngIf="!isCreate"
-      mat-flat-button
-      color="primary"
-      (click)="cancel()"
-    >
-      Cancel
-    </button>
-    <button
-      mat-flat-button
-      color="primary"
-      [disabled]="contactForm.invalid"
-      (click)="onFormSubmit()"
-    >
-      {{ submitButtonName }}
-    </button>
-  </div>
+  <button
+    mat-flat-button
+    color="primary"
+    [disabled]="contactForm.invalid"
+    (click)="onFormSubmit()"
+  >
+    {{ submitButtonName }}
+  </button>
 </div>

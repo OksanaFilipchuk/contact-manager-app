@@ -12,8 +12,8 @@ export class LocalStorageService implements OnInit {
 
   initiateData() {
     initData.forEach((el, index) => {
-      if (!Object.keys(localStorage).includes(index.toString()))
-        this.setItem(index.toString(), JSON.stringify(el));
+      if (!Object.keys(localStorage).includes((index + 1).toString()))
+        this.setItem((index + 1).toString(), JSON.stringify(el));
     });
   }
 

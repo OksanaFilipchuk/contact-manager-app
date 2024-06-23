@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from '../../services/local-storage.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-edit-contact',
@@ -30,7 +31,7 @@ export class CreateEditContactComponent implements OnInit {
       Validators.pattern('^[- +()0-9]+$'),
     ]),
     secondaryPhone: new FormControl('', [Validators.pattern('^[- +()0-9]+$')]),
-    address: new FormControl(''),
+    address: new FormControl('', [Validators.maxLength(30)]),
     birthday: new FormControl(''),
     additionalInfo: new FormControl('', [Validators.maxLength(100)]),
   });
@@ -39,7 +40,8 @@ export class CreateEditContactComponent implements OnInit {
     private readonly adapter: DateAdapter<Date>,
     private router: Router,
     private route: ActivatedRoute,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    readonly snackBar: MatSnackBar
   ) {
     this.adapter.setLocale('UA');
   }
@@ -73,6 +75,12 @@ export class CreateEditContactComponent implements OnInit {
       id.toString(),
       JSON.stringify(this.contactForm.value)
     );
+    this.snackBar.open(
+      idToUpdate ? 'Contact has been updated' : 'Contact has been created',
+      'Close',
+      { duration: 2000, verticalPosition: 'top' }
+    );
+    this.contactForm.reset();
   }
 
   private updateContact(): void {
@@ -81,6 +89,4 @@ export class CreateEditContactComponent implements OnInit {
       this.createContact(this.contactIdToUpdate);
     }
   }
-
-  cancel() {}
 }
